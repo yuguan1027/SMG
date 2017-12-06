@@ -14,9 +14,6 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { Button,Icon } from 'react-native-elements';
-import { DrawerNavigator, NavigationActions } from 'react-navigation';
-
-import CollegeSideMenu from '../../menu/college/menu';
 
 const longtext = "The Seminar Digital Kerajaan 2017 was organized to share knowledge, ideas and experiences towards improving the delivery system of government services through the ";
 const win = Dimensions.get('window');
@@ -43,8 +40,7 @@ const styles = StyleSheet.create({
 
 });
 
-
-var News = ['1':'1', '2':'2', '3':'3','4':4,'5':5,'6':6,'7':7,'8':8,'9':9];
+var News = ['1':'1'];
 var NewsList = News.map(function(New,key){
                 return <TouchableHighlight
                         style={{ marginBottom:10 }}
@@ -68,63 +64,6 @@ const MainContent  = ({ navigation }) => (
         //resizeMode="contain"
         source={require('../../../assets/Sentral/banner3.png')}
       />
-      <View style={{flex: 1, flexDirection: 'row',justifyContent: 'space-between',padding:10}}>
-        <TouchableHighlight
-          underlayColor='#ECEFF1'
-          onPress={() => navigation.navigate('AboutUs')}>
-          <View>
-            <Icon
-              raised
-              name='500px'
-              type='font-awesome'
-              color={global.SentralGreen}
-            />
-            <Text style={styles.iconText}>About Us</Text>
-          </View>
-        </TouchableHighlight>
-
-        <TouchableHighlight
-          underlayColor='#ECEFF1'
-          onPress={() =>  navigation.navigate('Programmes')}>
-          <View>
-            <Icon
-              raised
-              name='500px'
-              type='font-awesome'
-              color={global.SentralGreen}
-            />
-            <Text style={styles.iconText}>Programmes</Text>
-          </View>
-        </TouchableHighlight>
-
-        <TouchableHighlight
-          underlayColor='#ECEFF1'
-          onPress={() =>  navigation.navigate('StudentLife')}>
-          <View>
-            <Icon
-              raised
-              name='500px'
-              type='font-awesome'
-              color={global.SentralGreen}
-            />
-            <Text style={styles.iconText}>Student Life</Text>
-          </View>
-        </TouchableHighlight>
-
-        <TouchableHighlight
-          underlayColor='#ECEFF1'
-          onPress={() =>  navigation.navigate('ContactUs')}>
-          <View>
-            <Icon
-              raised
-              name='500px'
-              type='font-awesome'
-              color={global.SentralGreen}
-            />
-            <Text style={styles.iconText}>Contact Us</Text>
-          </View>
-        </TouchableHighlight>
-      </View>
 
       <View style={styles.container_SentralNews}>
         <Text style={styles.text_SentralNews}>SENTRAL News</Text>
@@ -135,7 +74,7 @@ const MainContent  = ({ navigation }) => (
           backgroundColor={global.SentralGreen}
           icon={{name: 'three-bars', type: 'octicon'}}
           title='View More News'
-          onPress={() =>  navigation.navigate('SentralNews')}
+          onPress={() => alert('View More News')}
         />
 
       </View>

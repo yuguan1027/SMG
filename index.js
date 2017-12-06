@@ -1,5 +1,6 @@
 import { AppRegistry } from 'react-native';
 import App from './App';
+import Test from './test';
 import Sample from './app/example/react_element';
 
 //Main Route

@@ -1,16 +1,23 @@
 
 import React from 'react';
-import { TabNavigator,StackNavigator } from 'react-navigation';
-
+import { StackNavigator } from 'react-navigation';
+import { Icon, Button } from 'react-native-elements';
+import { StyleSheet } from 'react-native';
 //Put the screen required
 import MainScreen from '../screen/main';
 //College
-import College from '../screen/college/main';
+//import College from '../screen/college/main';
+import CollegeDrawerNav from './college_route';
 //Student Portal
 import Student from '../screen/student/main';
-//Login
-
+//Login]
+import Login from '../screen/login/main';
 //QR Code
+
+const tintColor = 'red';
+
+
+
 
 
 export const MainStackNav = StackNavigator({
@@ -18,7 +25,6 @@ export const MainStackNav = StackNavigator({
 	  screen: MainScreen,
 	  navigationOptions: {
   		title: 'SENTRAL College Penang',
-  		tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />,
       headerTintColor: 'white',
       headerStyle: {
         backgroundColor: '#1a5b4c'
@@ -26,23 +32,34 @@ export const MainStackNav = StackNavigator({
 	  },
   },
   College: {
-    screen: College,
-    navigationOptions: {
+    screen: CollegeDrawerNav,
+    navigationOptions: ({ navigation }) => ({
+      headerRight: <Icon name="menu" color='white' size={35} onPress={ () => navigation.navigate('DrawerToggle') } />,
   		title: 'College Info',
-  		tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />,
       headerTintColor: 'white',
       headerStyle: {
         backgroundColor: '#1a5b4c'
       },
-	  },
+
+
+	  }),
   },
   /*
   StudentPortal: {
     screen: Student,
   }, */
-/*   Login: {
-    screen: Screen3,
+  Login: {
+    screen: Login,
+	  navigationOptions: {
+  		title: 'Login',
+  		tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />,
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: '#1a5b4c'
+      },
+    },
   },
+  /*
   QR: {
     screen: Screen3,
   }, */
@@ -50,5 +67,13 @@ export const MainStackNav = StackNavigator({
   {
 	//mode: 'modal',
 	//headerMode: 'none',
+
   }
 );
+
+const styles = StyleSheet.create({
+  sideMenuBtn:{
+    padding:10,
+  },
+
+});

@@ -27,7 +27,7 @@ export default class App extends Component<{}> {
     alert('Student Function');
   }
   login_function = () => {
-    alert('Login Function');
+    this.props.navigation.navigate('Login')
   }
 
   render() {
