@@ -18,6 +18,9 @@ import { DrawerNavigator, NavigationActions } from 'react-navigation';
 
 import CollegeSideMenu from '../../menu/college/menu';
 
+
+
+
 const longtext = "The Seminar Digital Kerajaan 2017 was organized to share knowledge, ideas and experiences towards improving the delivery system of government services through the ";
 const win = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -61,87 +64,92 @@ var NewsList = News.map(function(New,key){
                });
 
 
+class MainContent extends React.Component {
 
-const MainContent  = ({ navigation }) => (
-    <ScrollView>
-      <Image style={[styles.fullImage]}
-        //resizeMode="contain"
-        source={require('../../../assets/Sentral/banner3.png')}
-      />
-      <View style={{flex: 1, flexDirection: 'row',justifyContent: 'space-between',padding:10}}>
-        <TouchableHighlight
-          underlayColor='#ECEFF1'
-          onPress={() => navigation.navigate('AboutUs')}>
-          <View>
-            <Icon
-              raised
-              name='500px'
-              type='font-awesome'
-              color={global.SentralGreen}
-            />
-            <Text style={styles.iconText}>About Us</Text>
-          </View>
-        </TouchableHighlight>
+ render() {
+   return (
+     <ScrollView>
+       <Image style={[styles.fullImage]}
+         //resizeMode="contain"
+         source={require('../../../assets/Sentral/banner3.png')}
+       />
+       <View style={{flex: 1, flexDirection: 'row',justifyContent: 'space-between',padding:10}}>
+         <TouchableHighlight
+           underlayColor='#ECEFF1'
+           onPress={() => this.props.navigation.navigate('AboutUsStack')}>
+           <View>
+             <Icon
+               raised
+               name='500px'
+               type='font-awesome'
+               color={global.SentralGreen}
+             />
+             <Text style={styles.iconText}>About Us</Text>
+           </View>
+         </TouchableHighlight>
 
-        <TouchableHighlight
-          underlayColor='#ECEFF1'
-          onPress={() =>  navigation.navigate('Programmes')}>
-          <View>
-            <Icon
-              raised
-              name='500px'
-              type='font-awesome'
-              color={global.SentralGreen}
-            />
-            <Text style={styles.iconText}>Programmes</Text>
-          </View>
-        </TouchableHighlight>
+         <TouchableHighlight
+           underlayColor='#ECEFF1'
+           onPress={() =>  this.props.navigation.navigate('ProgrammesStack')}>
+           <View>
+             <Icon
+               raised
+               name='500px'
+               type='font-awesome'
+               color={global.SentralGreen}
+             />
+             <Text style={styles.iconText}>Programmes</Text>
+           </View>
+         </TouchableHighlight>
 
-        <TouchableHighlight
-          underlayColor='#ECEFF1'
-          onPress={() =>  navigation.navigate('StudentLife')}>
-          <View>
-            <Icon
-              raised
-              name='500px'
-              type='font-awesome'
-              color={global.SentralGreen}
-            />
-            <Text style={styles.iconText}>Student Life</Text>
-          </View>
-        </TouchableHighlight>
+         <TouchableHighlight
+           underlayColor='#ECEFF1'
+           onPress={() =>  this.props.navigation.navigate('StudentLifeStack')}>
+           <View>
+             <Icon
+               raised
+               name='500px'
+               type='font-awesome'
+               color={global.SentralGreen}
+             />
+             <Text style={styles.iconText}>Student Life</Text>
+           </View>
+         </TouchableHighlight>
 
-        <TouchableHighlight
-          underlayColor='#ECEFF1'
-          onPress={() =>  navigation.navigate('ContactUs')}>
-          <View>
-            <Icon
-              raised
-              name='500px'
-              type='font-awesome'
-              color={global.SentralGreen}
-            />
-            <Text style={styles.iconText}>Contact Us</Text>
-          </View>
-        </TouchableHighlight>
-      </View>
+         <TouchableHighlight
+           underlayColor='#ECEFF1'
+           onPress={() =>  this.props.navigation.navigate('ContactUsStack')}>
+           <View>
+             <Icon
+               raised
+               name='500px'
+               type='font-awesome'
+               color={global.SentralGreen}
+             />
+             <Text style={styles.iconText}>Contact Us</Text>
+           </View>
+         </TouchableHighlight>
+       </View>
 
-      <View style={styles.container_SentralNews}>
-        <Text style={styles.text_SentralNews}>SENTRAL News</Text>
+       <View style={styles.container_SentralNews}>
+         <Text style={styles.text_SentralNews}>SENTRAL News</Text>
 
-        { NewsList }
+         { NewsList }
 
-        <Button
-          backgroundColor={global.SentralGreen}
-          icon={{name: 'three-bars', type: 'octicon'}}
-          title='View More News'
-          onPress={() =>  navigation.navigate('SentralNews')}
-        />
+         <Button
+           backgroundColor={global.SentralGreen}
+           icon={{name: 'three-bars', type: 'octicon'}}
+           title='View More News'
+           onPress={() =>  this.props.navigation.navigate('SentralNewsStack')}
+         />
 
-      </View>
+       </View>
 
-    </ScrollView>
-);
+     </ScrollView>
+   );
+ }
+}
+
 
 
 export default MainContent;

@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
 import { Icon, Button } from 'react-native-elements';
 import { StyleSheet } from 'react-native';
@@ -7,7 +7,7 @@ import { StyleSheet } from 'react-native';
 import MainScreen from '../screen/main';
 //College
 //import College from '../screen/college/main';
-import CollegeDrawerNav from './college_route';
+import CollegeRoute from './college_route';
 //Student Portal
 import Student from '../screen/student/main';
 //Login]
@@ -32,16 +32,15 @@ export const MainStackNav = StackNavigator({
 	  },
   },
   College: {
-    screen: CollegeDrawerNav,
+    screen: CollegeRoute,
     navigationOptions: ({ navigation }) => ({
+      header:null,
       headerRight: <Icon name="menu" color='white' size={35} onPress={ () => navigation.navigate('DrawerToggle') } />,
   		title: 'College Info',
       headerTintColor: 'white',
       headerStyle: {
         backgroundColor: '#1a5b4c'
       },
-
-
 	  }),
   },
   /*
@@ -70,6 +69,8 @@ export const MainStackNav = StackNavigator({
 
   }
 );
+
+
 
 const styles = StyleSheet.create({
   sideMenuBtn:{

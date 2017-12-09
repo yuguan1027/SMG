@@ -15,7 +15,7 @@ const win = Dimensions.get('window');
 const styles = StyleSheet.create({
   fullImage: {
     width: Dimensions.get('window').width,
-    height: 150,
+    height: 130,
   },
 
 });
@@ -178,13 +178,15 @@ img5 = require("../../../assets/Sentral/AboutUs/banner5.png");
 
 
   const ContentGenerator = ( {img , desc} ) => (
+    <View>
+    <Image style={[styles.fullImage]}
+      //resizeMode="contain"
+    source={img}
+    />
     <ScrollView>
-      <Image style={[styles.fullImage]}
-        //resizeMode="contain"
-      source={img}
-      />
       <Text>{desc}</Text>
     </ScrollView>
+    </View>
   );
 
 
@@ -257,7 +259,7 @@ const TabNav = TabNavigator({
      backgroundColor: '#1a5b4c'
    },
   },
-  headerMode: 'screen',
+  header:null,
 });
 
 

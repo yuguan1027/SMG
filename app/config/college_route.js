@@ -1,4 +1,4 @@
-import { DrawerNavigator } from 'react-navigation';
+import { DrawerNavigator,StackNavigator,NavigationActions } from 'react-navigation';
 import { Button,Icon } from 'react-native-elements';
 import React, { Component } from 'react';
 import MainScreen from '../screen/college/main';
@@ -7,6 +7,7 @@ import ProgrammesScreen from '../screen/college/programmes';
 import StudentLifeScreen from '../screen/college/student_life';
 import ContactUsScreen from '../screen/college/contact_us';
 import SentralNewsScreen from '../screen/college/sentral_news';
+import MainRoute from './route';
 
 /*
 const MainScreen = ({ navigation }) => (
@@ -97,13 +98,99 @@ SentralNewsScreen.navigationOptions = {
   ),
 };
 
+const BackToMain = NavigationActions.reset({
+  index: 0,
+  actions: [
+	   NavigationActions.navigate({ routeName: 'MainRoute'})
+  ]
+});
 
-
- const DrawerNavigation = DrawerNavigator(
+const newMainScreen = StackNavigator(
   {
     Home: {
       path: '/college',
       screen: MainScreen,
+      navigationOptions: ({ navigation }) => ({
+        headerLeft: <Icon name="menu" color='white' size={35} onPress={ () => navigation.dispatch(BackToMain) } />,
+        headerRight: <Icon name="menu" color='white' size={35} onPress={ () => navigation.navigate('DrawerToggle') } />,
+    		title: 'College Info',
+        headerTintColor: 'white',
+        headerStyle: {
+          backgroundColor: '#1a5b4c'
+        },
+  	  }),
+    },
+    AboutUsStack: {
+      path: '/college/about-us',
+      screen: AboutUsScreen,
+      navigationOptions: ({ navigation }) => ({
+        headerRight: <Icon name="menu" color='white' size={35} onPress={ () => navigation.navigate('DrawerToggle') } />,
+    		title: 'About Us',
+        headerTintColor: 'white',
+        headerStyle: {
+          backgroundColor: '#1a5b4c'
+        },
+  	  }),
+    },
+    ProgrammesStack: { 
+      path: '/college/programmes',
+      screen: ProgrammesScreen,
+      navigationOptions: ({ navigation }) => ({
+        headerRight: <Icon name="menu" color='white' size={35} onPress={ () => navigation.navigate('DrawerToggle') } />,
+    		title: 'Programmes',
+        headerTintColor: 'white',
+        headerStyle: {
+          backgroundColor: '#1a5b4c'
+        },
+  	  }),
+    },
+    StudentLifeStack: {
+      path: '/college/student-life',
+      screen: StudentLifeScreen,
+      navigationOptions: ({ navigation }) => ({
+        headerRight: <Icon name="menu" color='white' size={35} onPress={ () => navigation.navigate('DrawerToggle') } />,
+    		title: 'Student Life',
+        headerTintColor: 'white',
+        headerStyle: {
+          backgroundColor: '#1a5b4c'
+        },
+  	  }),
+    },
+    ContactUsStack: {
+      path: '/college/contact-us',
+      screen: ContactUsScreen,
+      navigationOptions: ({ navigation }) => ({
+        headerRight: <Icon name="menu" color='white' size={35} onPress={ () => navigation.navigate('DrawerToggle') } />,
+    		title: 'Contact Us',
+        headerTintColor: 'white',
+        headerStyle: {
+          backgroundColor: '#1a5b4c'
+        },
+  	  }),
+    },
+    SentralNewsStack: {
+      path: '/college/sentral-news',
+      screen: SentralNewsScreen,
+      navigationOptions: ({ navigation }) => ({
+        headerRight: <Icon name="menu" color='white' size={35} onPress={ () => navigation.navigate('DrawerToggle') } />,
+    		title: 'Sentral News',
+        headerTintColor: 'white',
+        headerStyle: {
+          backgroundColor: '#1a5b4c'
+        },
+  	  }),
+    },
+
+    //PREVIOUS routes
+
+  }
+);
+
+const DrawerNavigation = DrawerNavigator(
+  {
+    Home: {
+      path: '/college',
+      screen: newMainScreen,
     },
     AboutUs: {
       path: '/college/about-us',
